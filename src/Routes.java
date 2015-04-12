@@ -34,7 +34,7 @@ public class Routes {
 		for (int i = 0; i < ls.size() - 1; i++) {
 			distance = getDistance(ls.get(i), ls.get(i + 1));
 			if (distance == -1){
-				System.out.println("NO SUCH ROUTE");
+				// No such route!
 				return -1;
 			}
 			total += distance;
