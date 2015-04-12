@@ -40,7 +40,11 @@ public class Routes {
 			total += distance;
 		}
 		return total;
+	}
+	
+	public ArrayList<String> getStationsList() {
 		
+		return null;
 	}
 	
 }
