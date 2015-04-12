@@ -43,8 +43,21 @@ public class Routes {
 	}
 	
 	public ArrayList<String> getStationsList() {
+		ArrayList<String> ls = new ArrayList<String>();
 		
-		return null;
+		for (String key : map.keySet()) {
+			if (!ls.contains(key)) {
+				ls.add(key);
+			}
+			HashMap<String, Integer> innerMap = map.get(key);
+			for(String innerKey : innerMap.keySet()) {
+				if (!ls.contains(innerKey)) {
+					ls.add(innerKey);
+				}
+			}
+		}
+		
+		return ls;
 	}
 	
 }
