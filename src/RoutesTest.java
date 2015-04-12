@@ -21,6 +21,8 @@ public class RoutesTest {
 		assertEquals(2, routes.getDistance("C", "E"));
 		assertEquals(3, routes.getDistance("E", "B"));
 		assertEquals(7, routes.getDistance("A", "E"));
+		assertEquals(-1, routes.getDistance("B", "A"));
+		assertEquals(-1, routes.getDistance("B", "F"));
 		
 		System.out.println("getDistance() test successful!");
 	}
@@ -33,6 +35,8 @@ public class RoutesTest {
 		assertEquals(13, routes.getTotalDistance("A-D-C"));
 		assertEquals(22, routes.getTotalDistance("A-E-B-C-D"));
 		assertEquals(-1, routes.getTotalDistance("A-E-D"));
+		assertEquals(-1, routes.getTotalDistance("A-A-A"));
+		assertEquals(-1, routes.getTotalDistance("A-F-J"));
 
 		System.out.println("getTotalDistance() test successful!");
 
