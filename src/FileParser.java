@@ -17,7 +17,7 @@ public class FileParser {
 	
 	
 	// Read data from file and constructs a graph
-	public HashMap getMap() {
+	public HashMap<String, HashMap<String, Integer>> getMap() {
 		Path path = Paths.get(fileName);
 		try {
 			s = new Scanner(path).useDelimiter("\\s*,\\s*");
@@ -25,7 +25,7 @@ public class FileParser {
 			e.printStackTrace();
 		}
 		
-		HashMap<String, HashMap> map = new HashMap<String, HashMap>();
+		HashMap<String, HashMap<String, Integer>> map = new HashMap<String, HashMap<String, Integer>>();
 		while (s.hasNext()) {
 			String route = s.next();
 			String start = String.valueOf(route.charAt(0));
@@ -36,7 +36,7 @@ public class FileParser {
 			if (map.containsKey(start)) {
 				map.get(start).put(end, distance);
 			}else{
-				HashMap destination = new HashMap();
+				HashMap<String, Integer> destination = new HashMap<String, Integer>();
 				destination.put(end, distance);
 				map.put(start, destination);				
 			}

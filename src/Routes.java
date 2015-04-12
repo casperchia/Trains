@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class Routes {
 	
 	private FileParser fp;
-	private HashMap<String, HashMap> map;
+	private HashMap<String, HashMap<String, Integer>> map;
 	
 	public Routes(String fileName) {
 		fp = new FileParser(fileName);
@@ -24,7 +24,7 @@ public class Routes {
 	
 	public int getTotalDistance(String route) {
 		Scanner s = new Scanner(route).useDelimiter("\\s*-\\s*");
-		ArrayList<String> ls = new ArrayList(); 
+		ArrayList<String> ls = new ArrayList<String>(); 
 		while (s.hasNext()) {
 			ls.add(s.next());
 		}
