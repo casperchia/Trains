@@ -24,7 +24,7 @@ public class RoutesTest {
 		assertEquals(-1, routes.getDistance("B", "A"));
 		assertEquals(-1, routes.getDistance("B", "F"));
 		
-		System.out.println("getDistance() test successful!");
+		System.out.println("1 ) getDistance() test successful!");
 	}
 
 	@Test
@@ -38,7 +38,7 @@ public class RoutesTest {
 		assertEquals(-1, routes.getTotalDistance("A-A-A"));
 		assertEquals(-1, routes.getTotalDistance("A-F-J"));
 
-		System.out.println("getTotalDistance() test successful!");
+		System.out.println("2 )getTotalDistance() test successful!");
 
 	}
 	
@@ -60,25 +60,25 @@ public class RoutesTest {
 		assertTrue(ls.contains("B"));
 		assertTrue(ls.contains("C"));
 		
-		System.out.println("getStationsList() test successful!");
+		System.out.println("3 ) getStationsList() test successful!");
 
 	}
 	
 	@Test
 	public void getMaxStopsTest() {
 		routes = new Routes("graph");
-		assertEquals(2, routes.getMaxStops("C", "C", 3));
-		assertEquals(0, routes.getMaxStops("C", "C", 0));
-		assertEquals(0, routes.getMaxStops("C", "C", 1));
-		assertEquals(0, routes.getMaxStops("C", "C", -1));
-		assertEquals(0, routes.getMaxStops("A", "C", 0));
-		assertEquals(0, routes.getMaxStops("A", "C", 1));
-		assertEquals(2, routes.getMaxStops("A", "C", 2));
-		assertEquals(3, routes.getMaxStops("A", "C", 3));
-		assertEquals(4, routes.getMaxStops("A", "C", 4));
-		assertEquals(4, routes.getMaxStops("A", "C", 5));
+		assertEquals(2, routes.getMaxStops("C", "C", 3, routes.map));
+		assertEquals(0, routes.getMaxStops("C", "C", 0, routes.map));
+		assertEquals(0, routes.getMaxStops("C", "C", 1, routes.map));
+		assertEquals(0, routes.getMaxStops("C", "C", -1, routes.map));
+		assertEquals(0, routes.getMaxStops("A", "C", 0, routes.map));
+		assertEquals(0, routes.getMaxStops("A", "C", 1, routes.map));
+		assertEquals(2, routes.getMaxStops("A", "C", 2, routes.map));
+		assertEquals(3, routes.getMaxStops("A", "C", 3, routes.map));
+		assertEquals(4, routes.getMaxStops("A", "C", 4, routes.map));
+		assertEquals(4, routes.getMaxStops("A", "C", 5, routes.map));
 
-		System.out.println("getMaxStops() test successful!");
+		System.out.println("4 ) getMaxStops() test successful!");
 	}
 	
 	@Test
@@ -96,7 +96,7 @@ public class RoutesTest {
 		assertFalse(ls.contains("B"));
 		assertFalse(ls.contains("C"));
 		
-		System.out.println("canTravelToTest() test successful!");
+		System.out.println("5 ) canTravelToTest() test successful!");
 	}
 
 	
