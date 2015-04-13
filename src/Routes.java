@@ -55,9 +55,12 @@ public class Routes {
 					ls.add(innerKey);
 				}
 			}
-		}
-		
+		}	
 		return ls;
 	}
 	
+	
+	public int getMaxStops() {
+		
+	}
 }

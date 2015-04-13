@@ -63,5 +63,22 @@ public class RoutesTest {
 		System.out.println("getStationsList() test successful!");
 
 	}
+	
+	@Test
+	public void getMaxStopsTest() {
+		routes = new Routes("graph");
+		assertEquals(2, routes.getMaxStops("C", "C", 3));
+		assertEquals(0, routes.getMaxStops("C", "C", 0));
+		assertEquals(0, routes.getMaxStops("C", "C", 1));
+		assertEquals(0, routes.getMaxStops("C", "C", -1));
+		assertEquals(0, routes.getMaxStops("A", "C", 0));
+		assertEquals(0, routes.getMaxStops("A", "C", 1));
+		assertEquals(2, routes.getMaxStops("A", "C", 2));
+		assertEquals(3, routes.getMaxStops("A", "C", 3));
+		assertEquals(4, routes.getMaxStops("A", "C", 4));
+		assertEquals(4, routes.getMaxStops("A", "C", 5));
+
+		System.out.println("getMaxStops() test successful!");
+	}
 
 }
