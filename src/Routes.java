@@ -60,22 +60,19 @@ public class Routes {
 	}
 	
 	//Get number of trips from "start" to "end" with maximum of "max" stops.
-	public int getMaxStops(String start, String end, int max, HashMap<String, HashMap<String, Integer>> map) {
+	public int getMaxStops(String start, String end, int max) {
 		if (max > 0) {
 			int totalStops = 0;
 			ArrayList<String> ls = canTravelTo(map, start);
 			
 			for (int i = 0; i < ls.size(); i++) {
 				String currentStation = ls.get(i);
-
-				//Create deep copy of map
-				HashMap<String, HashMap<String, Integer>> newMap = deepCopy(map);
 				
 				//Check if destination reached
 				if (currentStation.equals(end)) {
-					totalStops += 1 + getMaxStops(currentStation, end, max - 1, newMap);
+					totalStops += 1 + getMaxStops(currentStation, end, max - 1);
 				} else {
-					totalStops += getMaxStops(currentStation, end, max - 1, newMap);					
+					totalStops += getMaxStops(currentStation, end, max - 1);					
 				}
 				
 			}
@@ -100,6 +97,7 @@ public class Routes {
 		return ls;
 	}
 	
+	//To be deleted!
 	//Creates a deep copy of given 2D HashMap
 	public HashMap<String, HashMap<String, Integer>> deepCopy (HashMap<String, HashMap<String, Integer>> map) {
 		HashMap<String, HashMap<String, Integer>> clone = new HashMap<String, HashMap<String, Integer>>();
@@ -113,22 +111,19 @@ public class Routes {
 		return clone;
 	}
 
-	public int getExactStops(String start, String end, int stops, HashMap<String, HashMap<String, Integer>> map) {
+	public int getExactStops(String start, String end, int stops) {
 		if (stops > 0) {
 			int totalStops = 0;
 			ArrayList<String> ls = canTravelTo(map, start);
 			
 			for (int i = 0; i < ls.size(); i++) {
 				String currentStation = ls.get(i);
-
-				//Create deep copy of map
-				HashMap<String, HashMap<String, Integer>> newMap = deepCopy(map);
 							
 				//Check if destination reached
 				if (currentStation.equals(end) && stops - 1 == 0) {
 					totalStops += 1;
 				} else {
-					totalStops += getExactStops(currentStation, end, stops - 1, newMap);					
+					totalStops += getExactStops(currentStation, end, stops - 1);					
 				}
 				
 			}
@@ -138,7 +133,7 @@ public class Routes {
 		}
 	}
 	
-	public int getShortest(String start, String end, int currentCost, HashMap<String, HashMap<String, Integer>> map) {
+	public int getShortest(String start, String end) {
 		
 		return 0;
 		
