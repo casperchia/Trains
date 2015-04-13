@@ -98,10 +98,7 @@ public class Routes {
 			return ls;
 		}
 		for (String key : toMap.keySet()) {
-			//Assume that there exists no route that is 0 in length
-			if (toMap.get(key) > 0) {
-				ls.add(key);
-			}
+			ls.add(key);
 		}
 		return ls;
 	}

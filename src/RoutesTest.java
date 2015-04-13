@@ -114,7 +114,7 @@ public class RoutesTest {
 		assertFalse(ls.contains("B"));
 		assertFalse(ls.contains("C"));
 		
-		System.out.println("canTravelToTest() test successful!");
+		System.out.println("canTravelTo() test successful!");
 	}
 	
 	@Test
@@ -122,6 +122,8 @@ public class RoutesTest {
 		routes = new Routes("graph");
 		HashMap<String, HashMap<String, Integer>> clone = routes.deepCopy(routes.map);
 		assertEquals(clone, routes.map);
+		
+		System.out.println("deepCopy() test successful!");
 	}
 
 	@Test
