@@ -1,4 +1,5 @@
 Instructions
+At least Java 7 is required to compile.
 To compile, change directory into the src folder and run
 	javac Trains.java
 Then copy the input files: graph, graph1, graph2, graph3 and input into the bin folder.
