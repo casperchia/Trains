@@ -76,7 +76,7 @@ public class Routes {
 				
 				//Check if destination reached
 				if (currentStation.equals(end)) {
-					totalStops += 1;
+					totalStops += 1 + getMaxStops(currentStation, end, max - 1, newMap);
 				} else {
 					totalStops += getMaxStops(currentStation, end, max - 1, newMap);					
 				}

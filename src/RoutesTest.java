@@ -89,12 +89,25 @@ public class RoutesTest {
 		routes = new Routes("graph");
 		assertEquals(3, routes.getMaxStops("A", "C", 3, routes.map));
 		routes = new Routes("graph");
-		assertEquals(4, routes.getMaxStops("A", "C", 4, routes.map));
+		assertEquals(6, routes.getMaxStops("A", "C", 4, routes.map));
 		routes = new Routes("graph");
-		assertEquals(4, routes.getMaxStops("A", "C", 5, routes.map));
+		assertEquals(9, routes.getMaxStops("A", "C", 5, routes.map));
 		
 		routes = new Routes("graph");
 		assertEquals(0, routes.getMaxStops("F", "A", 5, routes.map));
+		
+		routes = new Routes("graph3");
+		assertEquals(0, routes.getMaxStops("A", "A", 1, routes.map));
+		routes = new Routes("graph3");
+		assertEquals(0, routes.getMaxStops("A", "A", 2, routes.map));
+		routes = new Routes("graph3");
+		assertEquals(1, routes.getMaxStops("A", "A", 3, routes.map));
+		routes = new Routes("graph3");
+		assertEquals(1, routes.getMaxStops("A", "A", 4, routes.map));
+		routes = new Routes("graph3");
+		assertEquals(1, routes.getMaxStops("A", "A", 5, routes.map));
+		routes = new Routes("graph3");
+		assertEquals(2, routes.getMaxStops("A", "A", 6, routes.map));
 
 		System.out.println("getMaxStops() test successful!");
 	}
@@ -130,9 +143,34 @@ public class RoutesTest {
 	public void getExactStopsTest() {
 		routes = new Routes("graph");
 		assertEquals(3, routes.getExactStops("A", "C", 4, routes.map));
-		routes = new Routes("graph");
-//		assertEquals(2, routes.getExactStops("A", "C", 2, routes.map));
 
+		routes = new Routes("graph3");
+		assertEquals(0, routes.getExactStops("A", "A", 1, routes.map));
+		routes = new Routes("graph3");
+		assertEquals(0, routes.getExactStops("A", "A", 2, routes.map));
+		routes = new Routes("graph3");
+		assertEquals(1, routes.getExactStops("A", "A", 3, routes.map));
+		routes = new Routes("graph3");
+		assertEquals(0, routes.getExactStops("A", "A", 4, routes.map));
+		routes = new Routes("graph3");
+		assertEquals(0, routes.getExactStops("A", "A", 5, routes.map));
+		routes = new Routes("graph3");
+		assertEquals(1, routes.getExactStops("A", "A", 6, routes.map));
+
+		routes = new Routes("graph3");
+		assertEquals(0, routes.getExactStops("B", "A", 0, routes.map));
+		routes = new Routes("graph3");
+		assertEquals(0, routes.getExactStops("B", "A", 1, routes.map));
+		routes = new Routes("graph3");
+		assertEquals(1, routes.getExactStops("B", "A", 2, routes.map));
+
+		routes = new Routes("graph3");
+		assertEquals(0, routes.getExactStops("A", "F", 0, routes.map));
+		routes = new Routes("graph3");
+		assertEquals(0, routes.getExactStops("A", "F", 5, routes.map));
+		routes = new Routes("graph3");
+		assertEquals(0, routes.getExactStops("G", "F", 5, routes.map));
+		
 		System.out.println("getExactStops() test successful!");
 	}
 	
