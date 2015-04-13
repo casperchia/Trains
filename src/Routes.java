@@ -31,7 +31,7 @@ public class Routes {
 				p = Pattern.compile("([A-Z]{2,})");
 				m = p.matcher(command);
 				if (m.find()) {
-					answer = getTotalDistance(m.group(0));
+					answer = getTotalDistance(m.group(1));
 				}
 				break;
 
