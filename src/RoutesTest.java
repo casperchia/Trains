@@ -1,6 +1,7 @@
 import static org.junit.Assert.*;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import org.junit.Test;
 
@@ -24,7 +25,7 @@ public class RoutesTest {
 		assertEquals(-1, routes.getDistance("B", "A"));
 		assertEquals(-1, routes.getDistance("B", "F"));
 		
-		System.out.println("1 ) getDistance() test successful!");
+		System.out.println("getDistance() test successful!");
 	}
 
 	@Test
@@ -38,7 +39,7 @@ public class RoutesTest {
 		assertEquals(-1, routes.getTotalDistance("A-A-A"));
 		assertEquals(-1, routes.getTotalDistance("A-F-J"));
 
-		System.out.println("2 )getTotalDistance() test successful!");
+		System.out.println("getTotalDistance() test successful!");
 
 	}
 	
@@ -60,25 +61,39 @@ public class RoutesTest {
 		assertTrue(ls.contains("B"));
 		assertTrue(ls.contains("C"));
 		
-		System.out.println("3 ) getStationsList() test successful!");
+		System.out.println("getStationsList() test successful!");
 
 	}
 	
 	@Test
 	public void getMaxStopsTest() {
+		routes = new Routes("graph2");
+		assertEquals(1, routes.getMaxStops("A", "C", 1, routes.map));
+		routes = new Routes("graph2");
+		assertEquals(2, routes.getMaxStops("A", "C", 2, routes.map));
+
 		routes = new Routes("graph");
 		assertEquals(2, routes.getMaxStops("C", "C", 3, routes.map));
+		routes = new Routes("graph");
 		assertEquals(0, routes.getMaxStops("C", "C", 0, routes.map));
+		routes = new Routes("graph");
 		assertEquals(0, routes.getMaxStops("C", "C", 1, routes.map));
+		routes = new Routes("graph");
 		assertEquals(0, routes.getMaxStops("C", "C", -1, routes.map));
+		routes = new Routes("graph");
 		assertEquals(0, routes.getMaxStops("A", "C", 0, routes.map));
+		routes = new Routes("graph");
 		assertEquals(0, routes.getMaxStops("A", "C", 1, routes.map));
+		routes = new Routes("graph");
 		assertEquals(2, routes.getMaxStops("A", "C", 2, routes.map));
+		routes = new Routes("graph");
 		assertEquals(3, routes.getMaxStops("A", "C", 3, routes.map));
+		routes = new Routes("graph");
 		assertEquals(4, routes.getMaxStops("A", "C", 4, routes.map));
+		routes = new Routes("graph");
 		assertEquals(4, routes.getMaxStops("A", "C", 5, routes.map));
 
-		System.out.println("4 ) getMaxStops() test successful!");
+		System.out.println("getMaxStops() test successful!");
 	}
 	
 	@Test
@@ -96,7 +111,14 @@ public class RoutesTest {
 		assertFalse(ls.contains("B"));
 		assertFalse(ls.contains("C"));
 		
-		System.out.println("5 ) canTravelToTest() test successful!");
+		System.out.println("canTravelToTest() test successful!");
+	}
+	
+	@Test
+	public void deepCopyTest() {
+		routes = new Routes("graph");
+		HashMap<String, HashMap<String, Integer>> clone = routes.deepCopy(routes.map);
+		assertEquals(clone, routes.map);
 	}
 
 	

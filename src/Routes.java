@@ -60,17 +60,41 @@ public class Routes {
 	}
 	
 	//Get number of trips from "start" to "end" with maximum of "max" stops.
-	public int getMaxStops(String start, String end, int max) {
-		
-		return 0;
+	public int getMaxStops(String start, String end, int max, HashMap<String, HashMap<String, Integer>> map) {
+		if (max > 0) {
+			int totalStops = 0;
+			ArrayList<String> ls = canTravelTo(map, start);
+			
+			for (int i = 0; i < ls.size(); i++) {
+				String currentStation = ls.get(i);
+
+				//Create deep copy of map
+				HashMap<String, HashMap<String, Integer>> newMap = deepCopy(map);
+				
+				//Set this route as travelled (by setting distance to -1)
+				newMap.get(start).replace(currentStation, -1);
+				
+				//Check if destination reached
+				if (currentStation.equals(end)) {
+					totalStops += 1;
+				} else {
+					totalStops += getMaxStops(currentStation, end, max - 1, newMap);					
+				}
+				
+			}
+			return totalStops;
+		} else {
+			return 0;
+		}
 	}
+	
 	
 	//Return list of stations that has not been travelled to from "from"
 	public ArrayList<String> canTravelTo(HashMap<String, HashMap<String, Integer>> map, String from) {
 		HashMap<String, Integer> toMap = map.get(from);
 		ArrayList<String> ls = new ArrayList<String>();
 		if (toMap == null) {
-			System.out.println("No such starting station.");
+//			System.out.println("No such starting station.");
 			return ls;
 		}
 		for (String key : toMap.keySet()) {
@@ -80,7 +104,19 @@ public class Routes {
 			}
 		}
 		return ls;
-		
+	}
+	
+	//Creates a deep copy of given 2D HashMap
+	public HashMap<String, HashMap<String, Integer>> deepCopy (HashMap<String, HashMap<String, Integer>> map) {
+		HashMap<String, HashMap<String, Integer>> clone = new HashMap<String, HashMap<String, Integer>>();
+		for (String key : map.keySet()) {
+			HashMap<String, Integer> innerMap = new HashMap<String, Integer>();;
+			for (String innerKey : map.get(key).keySet()) {
+				innerMap.put(innerKey, map.get(key).get(innerKey));
+			}
+			clone.put(key, innerMap);
+		}		
+		return clone;
 	}
 }
 
