@@ -59,8 +59,32 @@ public class Routes {
 		return ls;
 	}
 	
+	//Get number of trips from "start" to "end" with maximum of "max" stops.
+	public int getMaxStops(String start, String end, int max) {
+		
+		return 0;
+	}
 	
-	public int getMaxStops() {
+	private ArrayList<String> canTravelTo(HashMap<String, HashMap<String, Integer>> map, String from) {
+		HashMap<String, Integer> toMap = map.get(from);
+		ArrayList<String> ls = new ArrayList<String>();
+		for (String key : map.keySet()) {
+			//Assume that there exists no route that is 0 in length
+			if (toMap.get(key) > 0) {
+				ls.add(key);
+			}
+		}
+		return ls;
 		
 	}
 }
+
+
+
+
+
+
+
+
+
+
