@@ -84,7 +84,7 @@ public class Routes {
 	}
 	
 	
-	//Return list of stations that has not been travelled to from "from"
+	//Return list of stations that can be travelled to from "from"
 	public ArrayList<String> canTravelTo(HashMap<String, HashMap<String, Integer>> map, String from) {
 		HashMap<String, Integer> toMap = map.get(from);
 		ArrayList<String> ls = new ArrayList<String>();
@@ -137,7 +137,16 @@ public class Routes {
 	public int getShortest(String start, String end) {
 		PriorityQueue<Node> queue = new PriorityQueue<Node>();
 		ArrayList<String> explored = new ArrayList<String>();
+		Node startNode = new Node(start, 0);
+		explored.add(startNode.getStation());
+		ArrayList<String> stationsToVisit = canTravelTo(map, start);
+		for (int i = 0; i < stationsToVisit.size(); i++) {
+			
+		}
 		
+		while (!queue.isEmpty()) {
+//			current = queue.remove();
+		}
 		
 		return 0;
 		
