@@ -71,9 +71,6 @@ public class Routes {
 				//Create deep copy of map
 				HashMap<String, HashMap<String, Integer>> newMap = deepCopy(map);
 				
-				//Set this route as travelled (by setting distance to -1)
-				newMap.get(start).replace(currentStation, -1);
-				
 				//Check if destination reached
 				if (currentStation.equals(end)) {
 					totalStops += 1 + getMaxStops(currentStation, end, max - 1, newMap);
@@ -126,10 +123,7 @@ public class Routes {
 
 				//Create deep copy of map
 				HashMap<String, HashMap<String, Integer>> newMap = deepCopy(map);
-				
-				//Set this route as travelled (by setting distance to -1)
-				newMap.get(start).replace(currentStation, -1);
-				
+							
 				//Check if destination reached
 				if (currentStation.equals(end) && stops - 1 == 0) {
 					totalStops += 1;
