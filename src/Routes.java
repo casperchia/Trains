@@ -138,6 +138,12 @@ public class Routes {
 		}
 	}
 	
+	public int getShortest(String start, String end, int currentCost, HashMap<String, HashMap<String, Integer>> map) {
+		
+		return 0;
+		
+	}
+	
 }
 
 

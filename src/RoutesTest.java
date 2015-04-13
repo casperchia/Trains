@@ -174,6 +174,16 @@ public class RoutesTest {
 		System.out.println("getExactStops() test successful!");
 	}
 	
+	@Test
+	public void getShortest() {
+		routes = new Routes("graph");
+		assertEquals(9, routes.getShortest("A", "C", 0, routes.map));
+		routes = new Routes("graph");
+		assertEquals(9, routes.getShortest("B", "B", 0, routes.map));
+
+		System.out.println("getShortest() test successful!");
+	}
+	
 	
 
 }
