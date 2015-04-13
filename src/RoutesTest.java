@@ -25,7 +25,7 @@ public class RoutesTest {
 		assertEquals(-1, routes.getDistance("B", "A"));
 		assertEquals(-1, routes.getDistance("B", "F"));
 		
-		System.out.println("getDistance() test successful!");
+//		System.out.println("getDistance() test successful!");
 	}
 
 	@Test
@@ -39,7 +39,7 @@ public class RoutesTest {
 		assertEquals(-1, routes.getTotalDistance("A-A-A"));
 		assertEquals(-1, routes.getTotalDistance("A-F-J"));
 
-		System.out.println("getTotalDistance() test successful!");
+//		System.out.println("getTotalDistance() test successful!");
 
 	}
 	
@@ -61,7 +61,7 @@ public class RoutesTest {
 		assertTrue(ls.contains("B"));
 		assertTrue(ls.contains("C"));
 		
-		System.out.println("getStationsList() test successful!");
+//		System.out.println("getStationsList() test successful!");
 
 	}
 	
@@ -93,7 +93,7 @@ public class RoutesTest {
 		assertEquals(1, routes.getMaxStops("A", "A", 5));
 		assertEquals(2, routes.getMaxStops("A", "A", 6));
 
-		System.out.println("getMaxStops() test successful!");
+//		System.out.println("getMaxStops() test successful!");
 	}
 	
 	@Test
@@ -111,7 +111,7 @@ public class RoutesTest {
 		assertFalse(ls.contains("B"));
 		assertFalse(ls.contains("C"));
 		
-		System.out.println("canTravelTo() test successful!");
+//		System.out.println("canTravelTo() test successful!");
 	}
 	
 	@Test
@@ -120,7 +120,7 @@ public class RoutesTest {
 		HashMap<String, HashMap<String, Integer>> clone = routes.deepCopy(routes.map);
 		assertEquals(clone, routes.map);
 		
-		System.out.println("deepCopy() test successful!");
+//		System.out.println("deepCopy() test successful!");
 	}
 
 	@Test
@@ -144,13 +144,22 @@ public class RoutesTest {
 		assertEquals(0, routes.getExactStops("A", "F", 5));
 		assertEquals(0, routes.getExactStops("G", "F", 5));
 		
-		System.out.println("getExactStops() test successful!");
+//		System.out.println("getExactStops() test successful!");
 	}
 	
 	@Test
-	public void getShortest() {
+	public void getShortestTest() {
 		routes = new Routes("graph2");
 		assertEquals(1, routes.getShortest("A", "B"));
+		assertEquals(3, routes.getShortest("A", "C"));
+		assertEquals(2, routes.getShortest("B", "C"));
+		assertEquals(0, routes.getShortest("C", "A"));
+		assertEquals(0, routes.getShortest("A", "A"));
+		
+		routes = new Routes("graph3");
+		assertEquals(6, routes.getShortest("A", "A"));
+		assertEquals(1, routes.getShortest("A", "B"));
+		assertEquals(3, routes.getShortest("A", "C"));
 		
 		routes = new Routes("graph");
 		assertEquals(9, routes.getShortest("A", "C"));
@@ -161,7 +170,7 @@ public class RoutesTest {
 		assertEquals(0, routes.getShortest("G", "A"));
 		assertEquals(0, routes.getShortest("G", "G"));
 
-		System.out.println("getShortest() test successful!");
+//		System.out.println("getShortest() test successful!");
 	}
 	
 	

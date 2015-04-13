@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.PriorityQueue;
 import java.util.Scanner;
@@ -135,19 +136,38 @@ public class Routes {
 	}
 	
 	public int getShortest(String start, String end) {
-		PriorityQueue<Node> queue = new PriorityQueue<Node>();
+		Comparator<Node> comparator = new NodeDistanceComparator();
+		PriorityQueue<Node> queue = new PriorityQueue<Node>(comparator);
 		ArrayList<String> explored = new ArrayList<String>();
+		
 		Node startNode = new Node(start, 0);
 		explored.add(startNode.getStation());
+		
 		ArrayList<String> stationsToVisit = canTravelTo(map, start);
 		for (int i = 0; i < stationsToVisit.size(); i++) {
-			
+			queue.add(new Node(stationsToVisit.get(i), getDistance(start, stationsToVisit.get(i))));
 		}
 		
 		while (!queue.isEmpty()) {
-//			current = queue.remove();
+			Node current = queue.remove();
+			String currentStation = current.getStation();
+			int currentDistance = current.getDistance();
+			
+			if (currentStation.equals(end)) {
+				return currentDistance;
+			}
+			
+			if (!explored.contains(currentStation)) {
+				explored.add(currentStation);
+				
+				stationsToVisit = canTravelTo(map, currentStation);
+				for (int i = 0; i < stationsToVisit.size(); i++) {
+					String nextStation = stationsToVisit.get(i);
+					queue.add(new Node(nextStation, currentDistance + getDistance(currentStation, nextStation)));
+				}
+			}
 		}
-		
+	
 		return 0;
 		
 	}
