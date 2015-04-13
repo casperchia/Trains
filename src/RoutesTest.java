@@ -92,6 +92,9 @@ public class RoutesTest {
 		assertEquals(4, routes.getMaxStops("A", "C", 4, routes.map));
 		routes = new Routes("graph");
 		assertEquals(4, routes.getMaxStops("A", "C", 5, routes.map));
+		
+		routes = new Routes("graph");
+		assertEquals(0, routes.getMaxStops("F", "A", 5, routes.map));
 
 		System.out.println("getMaxStops() test successful!");
 	}
@@ -121,6 +124,16 @@ public class RoutesTest {
 		assertEquals(clone, routes.map);
 	}
 
+	@Test
+	public void getExactStopsTest() {
+		routes = new Routes("graph");
+		assertEquals(3, routes.getExactStops("A", "C", 4, routes.map));
+		routes = new Routes("graph");
+//		assertEquals(2, routes.getExactStops("A", "C", 2, routes.map));
+
+		System.out.println("getExactStops() test successful!");
+	}
+	
 	
 
 }

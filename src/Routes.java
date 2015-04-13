@@ -118,6 +118,35 @@ public class Routes {
 		}		
 		return clone;
 	}
+
+	public int getExactStops(String start, String end, int stops, HashMap<String, HashMap<String, Integer>> map) {
+		if (stops > 0) {
+			int totalStops = 0;
+			ArrayList<String> ls = canTravelTo(map, start);
+			
+			for (int i = 0; i < ls.size(); i++) {
+				String currentStation = ls.get(i);
+
+				//Create deep copy of map
+				HashMap<String, HashMap<String, Integer>> newMap = deepCopy(map);
+				
+				//Set this route as travelled (by setting distance to -1)
+				newMap.get(start).replace(currentStation, -1);
+				
+				//Check if destination reached
+				if (currentStation.equals(end) && stops - 1 == 0) {
+					totalStops += 1;
+				} else {
+					totalStops += getExactStops(currentStation, end, stops - 1, newMap);					
+				}
+				
+			}
+			return totalStops;
+		} else {
+			return 0;
+		}
+	}
+	
 }
 
 
