@@ -80,5 +80,25 @@ public class RoutesTest {
 
 		System.out.println("getMaxStops() test successful!");
 	}
+	
+	@Test
+	public void canTravelToTest() {
+		routes = new Routes("graph");
+		ArrayList<String> ls = routes.canTravelTo(routes.map, "A");
+		assertEquals(3, ls.size());
+		assertTrue(ls.contains("B"));
+		assertTrue(ls.contains("D"));
+		assertTrue(ls.contains("E"));
+
+		ls = routes.canTravelTo(routes.map, "F");
+		assertEquals(0, ls.size());
+		assertFalse(ls.contains("A"));
+		assertFalse(ls.contains("B"));
+		assertFalse(ls.contains("C"));
+		
+		System.out.println("canTravelToTest() test successful!");
+	}
+
+	
 
 }

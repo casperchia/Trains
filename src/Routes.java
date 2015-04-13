@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class Routes {
 	
 	private FileParser fp;
-	private HashMap<String, HashMap<String, Integer>> map;
+	public HashMap<String, HashMap<String, Integer>> map;
 	
 	public Routes(String fileName) {
 		fp = new FileParser(fileName);
@@ -65,10 +65,15 @@ public class Routes {
 		return 0;
 	}
 	
-	private ArrayList<String> canTravelTo(HashMap<String, HashMap<String, Integer>> map, String from) {
+	//Return list of stations that has not been travelled to from "from"
+	public ArrayList<String> canTravelTo(HashMap<String, HashMap<String, Integer>> map, String from) {
 		HashMap<String, Integer> toMap = map.get(from);
 		ArrayList<String> ls = new ArrayList<String>();
-		for (String key : map.keySet()) {
+		if (toMap == null) {
+			System.out.println("No such starting station.");
+			return ls;
+		}
+		for (String key : toMap.keySet()) {
 			//Assume that there exists no route that is 0 in length
 			if (toMap.get(key) > 0) {
 				ls.add(key);
