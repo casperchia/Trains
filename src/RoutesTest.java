@@ -177,9 +177,19 @@ public class RoutesTest {
 	@Test
 	public void getShortest() {
 		routes = new Routes("graph");
-//		assertEquals(9, routes.getShortest("A", "C"));
+		assertEquals(9, routes.getShortest("A", "C"));
 		routes = new Routes("graph");
-//		assertEquals(9, routes.getShortest("B", "B"));
+		assertEquals(9, routes.getShortest("B", "B"));
+		routes = new Routes("graph");
+		assertEquals(8, routes.getShortest("C", "D"));
+		routes = new Routes("graph");
+		assertEquals(0, routes.getShortest("A", "A"));
+		routes = new Routes("graph");
+		assertEquals(0, routes.getShortest("A", "G"));
+		routes = new Routes("graph");
+		assertEquals(0, routes.getShortest("G", "A"));
+		routes = new Routes("graph");
+		assertEquals(0, routes.getShortest("G", "G"));
 
 		System.out.println("getShortest() test successful!");
 	}
