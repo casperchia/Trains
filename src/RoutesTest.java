@@ -110,14 +110,6 @@ public class RoutesTest {
 	}
 	
 	@Test
-	public void deepCopyTest() {
-		routes = new Routes("input", "graph");
-		HashMap<String, HashMap<String, Integer>> clone = routes.deepCopy(routes.map);
-		assertEquals(clone, routes.map);
-		
-	}
-
-	@Test
 	public void getExactStopsTest() {
 		routes = new Routes("input", "graph");
 		assertEquals(3, routes.getExactStops("A", "C", 4));

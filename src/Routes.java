@@ -159,20 +159,6 @@ public class Routes {
 		return ls;
 	}
 	
-	//To be deleted!
-	//Creates a deep copy of given 2D HashMap
-	public HashMap<String, HashMap<String, Integer>> deepCopy (HashMap<String, HashMap<String, Integer>> map) {
-		HashMap<String, HashMap<String, Integer>> clone = new HashMap<String, HashMap<String, Integer>>();
-		for (String key : map.keySet()) {
-			HashMap<String, Integer> innerMap = new HashMap<String, Integer>();;
-			for (String innerKey : map.get(key).keySet()) {
-				innerMap.put(innerKey, map.get(key).get(innerKey));
-			}
-			clone.put(key, innerMap);
-		}		
-		return clone;
-	}
-
 	public int getExactStops(String start, String end, int stops) {
 		if (stops > 0) {
 			int totalStops = 0;
