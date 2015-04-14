@@ -16,7 +16,7 @@ public class FileParser {
 		graphFileName = graphFile;
 	}
 	
-	// Returns an array of commands given in the input file
+	// Returns an array of commands given in the input file.
 	public ArrayList<String> getCommands() {
 		Path path = Paths.get(inputFileName);
 		ArrayList<String> commands = new ArrayList<String>();
@@ -31,7 +31,7 @@ public class FileParser {
 		return commands;
 	}
 	
-	// Read data from file and constructs a graph
+	// Read data from file and constructs a graph.
 	public HashMap<String, HashMap<String, Integer>> getMap() {
 		Path path = Paths.get(graphFileName);
 		try {
@@ -60,6 +60,5 @@ public class FileParser {
 		return map;
 
 	}
-	
 
 }

@@ -25,7 +25,6 @@ public class RoutesTest {
 		assertEquals(7, routes.getDistance("A", "E"));
 		assertEquals(-1, routes.getDistance("B", "A"));
 		assertEquals(-1, routes.getDistance("B", "F"));
-		
 	}
 
 	@Test
@@ -38,8 +37,6 @@ public class RoutesTest {
 		assertEquals(-1, routes.getTotalDistance("AED"));
 		assertEquals(-1, routes.getTotalDistance("AAA"));
 		assertEquals(-1, routes.getTotalDistance("AFJ"));
-
-
 	}
 	
 	@Test
@@ -69,7 +66,6 @@ public class RoutesTest {
 		assertEquals(1, routes.getMaxStops("A", "A", 4));
 		assertEquals(1, routes.getMaxStops("A", "A", 5));
 		assertEquals(2, routes.getMaxStops("A", "A", 6));
-
 	}
 	
 	@Test
@@ -86,7 +82,6 @@ public class RoutesTest {
 		assertFalse(ls.contains("A"));
 		assertFalse(ls.contains("B"));
 		assertFalse(ls.contains("C"));
-		
 	}
 	
 	@Test
@@ -109,7 +104,6 @@ public class RoutesTest {
 		assertEquals(0, routes.getExactStops("A", "F", 0));
 		assertEquals(0, routes.getExactStops("A", "F", 5));
 		assertEquals(0, routes.getExactStops("G", "F", 5));
-		
 	}
 	
 	@Test
@@ -134,7 +128,6 @@ public class RoutesTest {
 		assertEquals(0, routes.getShortest("A", "G"));
 		assertEquals(0, routes.getShortest("G", "A"));
 		assertEquals(0, routes.getShortest("G", "G"));
-
 	}
 	
 	@Test
@@ -168,7 +161,6 @@ public class RoutesTest {
 		assertEquals(1, routes.getMaxDistances("A", "A", 12));
 		assertEquals(2, routes.getMaxDistances("A", "A", 13));
 		assertEquals(2, routes.getMaxDistances("A", "A", 14));
-		
 	}
 
 }
