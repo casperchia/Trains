@@ -25,7 +25,6 @@ public class RoutesTest {
 		assertEquals(-1, routes.getDistance("B", "A"));
 		assertEquals(-1, routes.getDistance("B", "F"));
 		
-//		System.out.println("getDistance() test successful!");
 	}
 
 	@Test
@@ -39,7 +38,6 @@ public class RoutesTest {
 		assertEquals(-1, routes.getTotalDistance("A-A-A"));
 		assertEquals(-1, routes.getTotalDistance("A-F-J"));
 
-//		System.out.println("getTotalDistance() test successful!");
 
 	}
 	
@@ -61,7 +59,6 @@ public class RoutesTest {
 		assertTrue(ls.contains("B"));
 		assertTrue(ls.contains("C"));
 		
-//		System.out.println("getStationsList() test successful!");
 
 	}
 	
@@ -93,7 +90,6 @@ public class RoutesTest {
 		assertEquals(1, routes.getMaxStops("A", "A", 5));
 		assertEquals(2, routes.getMaxStops("A", "A", 6));
 
-//		System.out.println("getMaxStops() test successful!");
 	}
 	
 	@Test
@@ -111,7 +107,6 @@ public class RoutesTest {
 		assertFalse(ls.contains("B"));
 		assertFalse(ls.contains("C"));
 		
-//		System.out.println("canTravelTo() test successful!");
 	}
 	
 	@Test
@@ -120,7 +115,6 @@ public class RoutesTest {
 		HashMap<String, HashMap<String, Integer>> clone = routes.deepCopy(routes.map);
 		assertEquals(clone, routes.map);
 		
-//		System.out.println("deepCopy() test successful!");
 	}
 
 	@Test
@@ -144,7 +138,6 @@ public class RoutesTest {
 		assertEquals(0, routes.getExactStops("A", "F", 5));
 		assertEquals(0, routes.getExactStops("G", "F", 5));
 		
-//		System.out.println("getExactStops() test successful!");
 	}
 	
 	@Test
@@ -170,9 +163,30 @@ public class RoutesTest {
 		assertEquals(0, routes.getShortest("G", "A"));
 		assertEquals(0, routes.getShortest("G", "G"));
 
-//		System.out.println("getShortest() test successful!");
 	}
 	
-	
+	@Test
+	public void getMaxDistancesTest() {
+		routes = new Routes("graph");
+		assertEquals(7, routes.getMaxDistances("C", "C", 30));
+
+		routes = new Routes("graph3");
+		assertEquals(0, routes.getMaxDistances("A", "A", 0));
+		assertEquals(0, routes.getMaxDistances("A", "A", 1));
+		assertEquals(0, routes.getMaxDistances("A", "A", 2));
+		assertEquals(0, routes.getMaxDistances("A", "A", 3));
+		assertEquals(0, routes.getMaxDistances("A", "A", 4));
+		assertEquals(0, routes.getMaxDistances("A", "A", 5));
+		assertEquals(0, routes.getMaxDistances("A", "A", 6));
+		assertEquals(1, routes.getMaxDistances("A", "A", 7));
+		assertEquals(1, routes.getMaxDistances("A", "A", 8));
+		assertEquals(1, routes.getMaxDistances("A", "A", 9));
+		assertEquals(1, routes.getMaxDistances("A", "A", 10));
+		assertEquals(1, routes.getMaxDistances("A", "A", 11));
+		assertEquals(1, routes.getMaxDistances("A", "A", 12));
+		assertEquals(1, routes.getMaxDistances("A", "A", 13));
+		assertEquals(2, routes.getMaxDistances("A", "A", 14));
+		
+	}
 
 }
