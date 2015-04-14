@@ -16,7 +16,7 @@ public class Routes {
 		map = fp.getMap();
 	}
 	
-	// Run commands from input file and prints results
+	// Run commands from input file and prints results.
 	public void runCommands() {
 		ArrayList<String> commands = fp.getCommands();
 		char type;
@@ -80,7 +80,7 @@ public class Routes {
 		}
 	}
 	
-	// Get distance of route from x to y
+	// Get distance of route from x to y.
 	public int getDistance(String x, String y) {
 		if (map.get(x).get(y) == null) {
 			//No such route!
@@ -89,7 +89,7 @@ public class Routes {
 		return (int) map.get(x).get(y);
 	}
 	
-	// Get total distance from route A-B-C-D..
+	// Get total distance from route A-B-C-D...
 	public int getTotalDistance(String route) {
 		String[] stations = route.split("");
 
@@ -106,7 +106,7 @@ public class Routes {
 		return total;
 	}
 	
-	//Get number of trips from "start" to "end" with maximum of "max" stops.
+	// Get number of trips from "start" to "end" with maximum of "max" number of stops.
 	public int getMaxStops(String start, String end, int max) {
 		if (max > 0) {
 			int totalStops = 0;
@@ -129,8 +129,7 @@ public class Routes {
 		}
 	}
 	
-	
-	//Return list of stations that can be travelled to from "from"
+	// Return list of stations that can be travelled to from "from".
 	public ArrayList<String> canTravelTo(HashMap<String, HashMap<String, Integer>> map, String from) {
 		HashMap<String, Integer> toMap = map.get(from);
 		ArrayList<String> ls = new ArrayList<String>();
@@ -144,6 +143,7 @@ public class Routes {
 		return ls;
 	}
 	
+	// Get number of trips from "start" to "end" with exactly "stops" number of stops.
 	public int getExactStops(String start, String end, int stops) {
 		if (stops > 0) {
 			int totalStops = 0;
@@ -166,6 +166,7 @@ public class Routes {
 		}
 	}
 	
+	// Get shortest length of route from "start" to "end".
 	public int getShortest(String start, String end) {
 		Comparator<Node> comparator = new NodeDistanceComparator();
 		PriorityQueue<Node> queue = new PriorityQueue<Node>(comparator);
@@ -202,6 +203,7 @@ public class Routes {
 		return 0;
 	}
 	
+	// Get number of different routes from "start" to "end" with total distance strictly less than "max".
 	public int getMaxDistances(String start, String end, int max) {
 		if (max > 0) {
 			int totalRoutes = 0;

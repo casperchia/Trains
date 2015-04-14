@@ -43,27 +43,6 @@ public class RoutesTest {
 	}
 	
 	@Test
-	public void getStationsListTest() {
-		routes = new Routes("input", "graph");
-		ArrayList<String> ls = routes.getStationsList();
-		assertEquals(5, ls.size());
-		assertTrue(ls.contains("A"));
-		assertTrue(ls.contains("B"));
-		assertTrue(ls.contains("C"));
-		assertTrue(ls.contains("D"));
-		assertTrue(ls.contains("E"));
-		
-		routes = new Routes("input", "graph2");
-		ls = routes.getStationsList();
-		assertEquals(3, ls.size());
-		assertTrue(ls.contains("A"));
-		assertTrue(ls.contains("B"));
-		assertTrue(ls.contains("C"));
-		
-
-	}
-	
-	@Test
 	public void getMaxStopsTest() {
 		routes = new Routes("input", "graph2");
 		assertEquals(1, routes.getMaxStops("A", "C", 1));
