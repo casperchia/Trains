@@ -80,6 +80,7 @@ public class Routes {
 		}
 	}
 	
+	// Get distance of route from x to y
 	public int getDistance(String x, String y) {
 		if (map.get(x).get(y) == null) {
 			//No such route!
@@ -88,6 +89,7 @@ public class Routes {
 		return (int) map.get(x).get(y);
 	}
 	
+	// Get total distance from route A-B-C-D..
 	public int getTotalDistance(String route) {
 		String[] stations = route.split("");
 
@@ -102,23 +104,6 @@ public class Routes {
 			total += distance;
 		}
 		return total;
-	}
-	
-	public ArrayList<String> getStationsList() {
-		ArrayList<String> ls = new ArrayList<String>();
-		
-		for (String key : map.keySet()) {
-			if (!ls.contains(key)) {
-				ls.add(key);
-			}
-			HashMap<String, Integer> innerMap = map.get(key);
-			for(String innerKey : innerMap.keySet()) {
-				if (!ls.contains(innerKey)) {
-					ls.add(innerKey);
-				}
-			}
-		}	
-		return ls;
 	}
 	
 	//Get number of trips from "start" to "end" with maximum of "max" stops.
