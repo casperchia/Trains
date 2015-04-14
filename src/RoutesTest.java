@@ -13,7 +13,7 @@ public class RoutesTest {
 	
 	@Test
 	public void getDistanceTest() {
-		routes = new Routes("input", "graph");
+		routes = new Routes("input", "graph1");
 		assertEquals(5, routes.getDistance("A", "B"));
 		assertEquals(4, routes.getDistance("B", "C"));
 		assertEquals(8, routes.getDistance("C", "D"));
@@ -29,7 +29,7 @@ public class RoutesTest {
 
 	@Test
 	public void getTotalDistanceTest() {
-		routes = new Routes("input", "graph");
+		routes = new Routes("input", "graph1");
 		assertEquals(9, routes.getTotalDistance("ABC"));
 		assertEquals(5, routes.getTotalDistance("AD"));
 		assertEquals(13, routes.getTotalDistance("ADC"));
@@ -45,7 +45,7 @@ public class RoutesTest {
 		assertEquals(1, routes.getMaxStops("A", "C", 1));
 		assertEquals(2, routes.getMaxStops("A", "C", 2));
 
-		routes = new Routes("input", "graph");
+		routes = new Routes("input", "graph1");
 		assertEquals(2, routes.getMaxStops("C", "C", 3));
 		assertEquals(0, routes.getMaxStops("C", "C", 0));
 		assertEquals(0, routes.getMaxStops("C", "C", 1));
@@ -70,7 +70,7 @@ public class RoutesTest {
 	
 	@Test
 	public void canTravelToTest() {
-		routes = new Routes("input", "graph");
+		routes = new Routes("input", "graph1");
 		ArrayList<String> ls = routes.canTravelTo(routes.map, "A");
 		assertEquals(3, ls.size());
 		assertTrue(ls.contains("B"));
@@ -86,7 +86,7 @@ public class RoutesTest {
 	
 	@Test
 	public void getExactStopsTest() {
-		routes = new Routes("input", "graph");
+		routes = new Routes("input", "graph1");
 		assertEquals(3, routes.getExactStops("A", "C", 4));
 
 		routes = new Routes("input", "graph3");
@@ -120,7 +120,7 @@ public class RoutesTest {
 		assertEquals(1, routes.getShortest("A", "B"));
 		assertEquals(3, routes.getShortest("A", "C"));
 		
-		routes = new Routes("input", "graph");
+		routes = new Routes("input", "graph1");
 		assertEquals(9, routes.getShortest("A", "C"));
 		assertEquals(9, routes.getShortest("B", "B"));
 		assertEquals(8, routes.getShortest("C", "D"));
@@ -132,7 +132,7 @@ public class RoutesTest {
 	
 	@Test
 	public void getMaxDistancesTest() {
-		routes = new Routes("input", "graph");
+		routes = new Routes("input", "graph1");
 		assertEquals(0, routes.getMaxDistances("A", "C", 5));
 		assertEquals(0, routes.getMaxDistances("A", "C", 9));
 		assertEquals(1, routes.getMaxDistances("A", "C", 10));
