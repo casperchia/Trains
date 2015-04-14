@@ -2,7 +2,8 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.PriorityQueue;
-import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 
 public class Routes {
@@ -10,10 +11,73 @@ public class Routes {
 	private FileParser fp;
 	public HashMap<String, HashMap<String, Integer>> map;
 	
-	public Routes(String fileName) {
-		fp = new FileParser(fileName);
+	public Routes(String inputFileName, String graphFileName) {
+		fp = new FileParser(inputFileName, graphFileName);
 		map = fp.getMap();
+	}
+	
+	// Run commands from input file and prints results
+	public void runCommands() {
+		ArrayList<String> commands = fp.getCommands();
+		char type;
+		Pattern p;
+		Matcher m;
+		int answer = 0;
+		for (int i = 0; i < commands.size(); i++) {
+			String command = commands.get(i);
+			type = command.charAt(0);
+			switch (type) {
+			case '-':
+				p = Pattern.compile("([A-Z]{2,})");
+				m = p.matcher(command);
+				if (m.find()) {
+					answer = getTotalDistance(m.group(0));
+				}
+				break;
 
+			case '#':
+				p = Pattern.compile("([A-Z]{1})([A-Z]{1})([0-9]+)");
+				m = p.matcher(command);
+				if (m.find()) {
+					answer = getMaxStops(m.group(1), m.group(2), Integer.parseInt(m.group(3)));
+				}
+				break;
+			
+			case '=':
+				p = Pattern.compile("([A-Z]{1})([A-Z]{1})([0-9]+)");
+				m = p.matcher(command);
+				if (m.find()) {
+					answer = getExactStops(m.group(1), m.group(2), Integer.parseInt(m.group(3)));
+				}
+				break;
+
+			case '&':
+				p = Pattern.compile("([A-Z]{1})([A-Z]{1})");
+				m = p.matcher(command);
+				if (m.find()) {
+					answer = getShortest(m.group(1), m.group(2));
+				}
+				break;
+
+			case '%':
+				p = Pattern.compile("([A-Z]{1})([A-Z]{1})([0-9]+)");
+				m = p.matcher(command);
+				if (m.find()) {
+					answer = getMaxDistances(m.group(1), m.group(2), Integer.parseInt(m.group(3)));
+				}
+				break;
+
+			default:
+				System.out.println("No such command!");
+				break;
+			}
+			
+			if (answer > 0) {				
+				System.out.println("Output #" + (i+1) + ": " + answer);
+			} else {
+				System.out.println("Output #" + (i+1) + ": NO SUCH ROUTE");
+			}
+		}
 	}
 	
 	public int getDistance(String x, String y) {
@@ -25,16 +89,12 @@ public class Routes {
 	}
 	
 	public int getTotalDistance(String route) {
-		Scanner s = new Scanner(route).useDelimiter("\\s*-\\s*");
-		ArrayList<String> ls = new ArrayList<String>(); 
-		while (s.hasNext()) {
-			ls.add(s.next());
-		}
+		String[] stations = route.split("");
 
 		int total = 0;
 		int distance;
-		for (int i = 0; i < ls.size() - 1; i++) {
-			distance = getDistance(ls.get(i), ls.get(i + 1));
+		for (int i = 0; i < stations.length - 1; i++) {
+			distance = getDistance(stations[i], stations[i + 1]);
 			if (distance == -1){
 				// No such route!
 				return -1;
