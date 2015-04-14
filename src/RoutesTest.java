@@ -168,7 +168,17 @@ public class RoutesTest {
 	@Test
 	public void getMaxDistancesTest() {
 		routes = new Routes("graph");
+		assertEquals(0, routes.getMaxDistances("A", "C", 5));
+		assertEquals(0, routes.getMaxDistances("A", "C", 9));
+		assertEquals(1, routes.getMaxDistances("A", "C", 10));
+		assertEquals(1, routes.getMaxDistances("A", "C", 13));
+		assertEquals(2, routes.getMaxDistances("A", "C", 14));
+		assertEquals(3, routes.getMaxDistances("A", "C", 15));
 		assertEquals(7, routes.getMaxDistances("C", "C", 30));
+		assertEquals(0, routes.getMaxDistances("F", "C", 30));
+		assertEquals(0, routes.getMaxDistances("F", "F", 30));
+		assertEquals(0, routes.getMaxDistances("F", "F", 0));
+		assertEquals(0, routes.getMaxDistances("C", "C", -1));
 
 		routes = new Routes("graph3");
 		assertEquals(0, routes.getMaxDistances("A", "A", 0));
@@ -184,7 +194,7 @@ public class RoutesTest {
 		assertEquals(1, routes.getMaxDistances("A", "A", 10));
 		assertEquals(1, routes.getMaxDistances("A", "A", 11));
 		assertEquals(1, routes.getMaxDistances("A", "A", 12));
-		assertEquals(1, routes.getMaxDistances("A", "A", 13));
+		assertEquals(2, routes.getMaxDistances("A", "A", 13));
 		assertEquals(2, routes.getMaxDistances("A", "A", 14));
 		
 	}

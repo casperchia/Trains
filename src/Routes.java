@@ -169,7 +169,28 @@ public class Routes {
 		}
 	
 		return 0;
-		
+	}
+	
+	public int getMaxDistances(String start, String end, int max) {
+		if (max > 0) {
+			int totalRoutes = 0;
+			ArrayList<String> ls = canTravelTo(map, start);
+			
+			for (int i = 0; i < ls.size(); i++) {
+				String currentStation = ls.get(i);
+				int distanceRemaining = max - getDistance(start, currentStation);
+				//Check if destination reached
+				if (currentStation.equals(end) && distanceRemaining > 0) {
+					totalRoutes += 1 + getMaxDistances(currentStation, end, distanceRemaining);
+				} else {
+					totalRoutes += getMaxDistances(currentStation, end, distanceRemaining);					
+				}
+				
+			}
+			return totalRoutes;
+		} else {
+			return 0;
+		}
 	}
 	
 }
